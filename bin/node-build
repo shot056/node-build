@@ -582,6 +582,11 @@ install_node() {
         sum=`curl -s https://nodejs.org/dist/$VERSION/SHASUMS${sha_algorithm}.txt | grep node-${t}.tar.gz | awk '{print $1}'`
         url="https://nodejs.org/dist/$VERSION/node-${t}.tar.gz#${sum}"
         install_package "node-${t}" "$url" copy
+      else
+          t="$VERSION"
+          sum=`curl -s https://nodejs.org/dist/$VERSION/SHASUMS${sha_algorithm}.txt | grep node-${t}.tar.gz | awk '{print $1}'`
+          url="https://nodejs.org/dist/$VERSION/node-${t}.tar.gz#${sum}"
+          install_package "node-${t}" "$url"
       fi
     fi
   fi
